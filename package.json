@@ -38,7 +38,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --trailing-comma es5 --print-width 100 --tab-width 2 --write",
+      "prettier --single-quote --trailing-comma es5 --print-width 100 --tab-width 2 --no-semi --write",
       "git add"
     ]
   },
@@ -47,7 +47,7 @@
     "trailingComma": "es5",
     "printWidth": 100,
     "tabWidth": 2,
-    "semi": true,
+    "semi": false,
     "bracketSpacing": true
   },
   "eslintConfig": {
