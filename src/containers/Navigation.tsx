@@ -1,5 +1,5 @@
 import React from 'react';
-import { addNote, swapNote } from '../actions';
+import { addNote, swapNote } from 'actions';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
