@@ -1,5 +1,5 @@
 import React from 'react'
-import { addNote, deleteNote, pruneNotes, swapNote } from 'actions'
+import { addNote, deleteNote, swapNote } from 'actions'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
@@ -9,25 +9,20 @@ interface NavigationProps {
   addNote: Function
   swapNote: Function
   deleteNote: Function
-  pruneNotes: Function
   activeNote: NoteItem
 }
 
-const Navigation: React.FC<NavigationProps> = ({
-  addNote,
-  swapNote,
-  deleteNote,
-  activeNote,
-  pruneNotes,
-}) => {
+const Navigation: React.FC<NavigationProps> = ({ addNote, swapNote, deleteNote, activeNote }) => {
   return (
     <nav className="navigation">
       <button
         className="nav-button"
         onClick={() => {
           const note = { id: uuid(), text: '', created: '', lastUpdated: '' }
-          addNote(note)
-          swapNote(note.id)
+          if (activeNote.text !== '') {
+            addNote(note)
+            swapNote(note.id)
+          }
         }}
       >
         + New Note
@@ -54,7 +49,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   addNote: note => dispatch(addNote(note)),
   swapNote: noteId => dispatch(swapNote(noteId)),
   deleteNote: noteId => dispatch(deleteNote(noteId)),
-  pruneNotes: () => dispatch(pruneNotes()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
