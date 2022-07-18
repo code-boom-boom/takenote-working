@@ -6,9 +6,9 @@ import Navigation from 'containers/Navigation'
 const App: React.FC = () => {
   return (
     <div className="app">
-      <Navigation />
       <NoteList />
       <NoteEditor />
+      <Navigation />
     </div>
   )
 }
