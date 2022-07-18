@@ -1,16 +1,16 @@
-import { Enums } from 'constants/enums';
+import { ActionType } from 'constants/enums';
 
 export const addNote = note => ({
-  type: Enums.ADD_NOTE,
+  type: ActionType.ADD_NOTE,
   payload: note
 })
 
 export const updateNote = note => ({
-  type: Enums.UPDATE_NOTE,
+  type: ActionType.UPDATE_NOTE,
   payload: note,
 })
 
 export const swapNote = noteId => ({
-  type: Enums.SWAP_NOTE,
+  type: ActionType.SWAP_NOTE,
   payload: noteId,
 })

@@ -1,11 +1,11 @@
-import { Enums } from 'constants/enums';
+import { ActionType } from 'constants/enums';
 import { initialState } from 'constants/fakeState';
 
 const noteReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Enums.ADD_NOTE:
+    case ActionType.ADD_NOTE:
       return [...state, action.payload];
-    case Enums.UPDATE_NOTE:
+    case ActionType.UPDATE_NOTE:
       return state.map(note =>
         note.id === action.payload.id
           ? {
