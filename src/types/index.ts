@@ -1,6 +1,6 @@
 export interface NoteItem {
-  id: string
-  text: string
-  created: Date
-  lastUpdated: Date
+  id: string;
+  text: string;
+  created: string;
+  lastUpdated: string;
 }
