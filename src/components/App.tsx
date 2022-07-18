@@ -1,7 +1,7 @@
-import React from 'react';
-import NoteList from 'containers/NoteList';
-import NoteEditor from 'containers/NoteEditor';
-import Navigation from 'containers/Navigation';
+import React from 'react'
+import NoteList from 'containers/NoteList'
+import NoteEditor from 'containers/NoteEditor'
+import Navigation from 'containers/Navigation'
 
 const App: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const App: React.FC = () => {
       <NoteList />
       <NoteEditor />
     </div>
-  );
-};
+  )
+}
 
 export default App
