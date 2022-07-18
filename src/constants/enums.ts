@@ -1,4 +1,4 @@
-export enum ActionType {
+export enum Enums {
   ADD_NOTE = 'ADD_NOTE',
   SWAP_NOTE = 'SWAP_NOTE',
   UPDATE_NOTE = 'UPDATE_NOTE',

@@ -1,9 +1,9 @@
-import { ActionType } from 'constants/actionType';
+import { Enums } from 'constants/enums';
 import { initialState } from 'constants/fakeState';
 
 const activeReducer = (state = initialState[0].id, action) => {
   switch (action.type) {
-    case ActionType.SWAP_NOTE:
+    case Enums.SWAP_NOTE:
       return action.payload;
     default:
       return state;
