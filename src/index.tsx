@@ -5,9 +5,10 @@ import './styles/index.scss';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
+import history from './utils/history';
 
 render(
-  <Router>
+  <Router history={history}>
     <Provider store={store}>
       <App />
     </Provider>
