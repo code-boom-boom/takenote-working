@@ -35,8 +35,8 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
           updateNote({ id: activeNote.id, text: value })
         }}
         onChange={(editor, data, value) => {
-          editor.focus()
-          editor.setCursor(editor.lineCount(), 0)
+          // editor.focus()
+          // editor.setCursor(editor.lineCount(), 0)
         }}
       />
     )
