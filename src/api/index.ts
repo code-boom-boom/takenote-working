@@ -1,12 +1,26 @@
 export const requestNotes = () => {
   return new Promise((resolve, reject) => {
-    const notes = localStorage.getItem('notes') || '[]'
+    const data = localStorage.getItem('notes') || '[]'
 
-    if (notes) {
-      resolve(JSON.parse(notes))
+    if (data) {
+      resolve(JSON.parse(data))
     } else {
       reject({
-        message: 'Not found',
+        message: 'Something went wrong',
+      })
+    }
+  })
+}
+
+export const requestCategories = () => {
+  return new Promise((resolve, reject) => {
+    const data = localStorage.getItem('categories') || '[]'
+
+    if (data) {
+      resolve(JSON.parse(data))
+    } else {
+      reject({
+        message: 'Something went wrong',
       })
     }
   })
@@ -14,12 +28,16 @@ export const requestNotes = () => {
 
 export const saveState = ({ payload }) => {
   return new Promise((resolve, reject) => {
-    localStorage.setItem('notes', JSON.stringify(payload))
+    localStorage.setItem('notes', JSON.stringify(payload.notes))
+    localStorage.setItem('categories', JSON.stringify(payload.categories))
 
     if (false) {
       reject({ message: 'Sync failed' })
     }
 
-    resolve(JSON.parse(localStorage.getItem('notes') || '[]'))
+    resolve({
+      notes: JSON.parse(localStorage.getItem('notes') || '[]'),
+      categories: JSON.parse(localStorage.getItem('categories') || '[]'),
+    })
   })
 }
