@@ -5,8 +5,8 @@ export const logger = store => next => action => {
   return result
 }
 
-export const getNoteTitle = text => {
-  let noteTitle
+export function getNoteTitle(text: string): string {
+  let noteTitle: string
 
   if (!text) {
     noteTitle = 'New Note'
@@ -19,7 +19,7 @@ export const getNoteTitle = text => {
   return noteTitle
 }
 
-export const downloadNote = (filename, text) => {
+export function downloadNote(filename: string, text: string): void {
   var pom = document.createElement('a')
   pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
   pom.setAttribute('download', `${filename}.md`)

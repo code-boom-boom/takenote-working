@@ -8,11 +8,11 @@ import { downloadNote, getNoteTitle } from '../helpers'
 import { useKey } from '../helpers/hooks'
 
 interface NavigationProps {
-  addNote: Function
-  swapNote: Function
-  deleteNote: Function
+  addNote: (note: NoteItem) => void
+  swapNote: (noteId: string) => void
+  deleteNote: (noteId: string) => void
   activeNote: NoteItem
-  syncState: Function
+  syncState: (notes: NoteItem[], categories: CategoryItem[]) => void
   notes: NoteItem[]
   categories: CategoryItem[]
   syncing: boolean
@@ -29,7 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({
   syncing,
 }) => {
   const newNoteHandler = () => {
-    const note = { id: uuid(), text: '', created: '', lastUpdated: '' }
+    const note: NoteItem = { id: uuid(), text: '', created: '', lastUpdated: '' }
 
     if ((activeNote && activeNote.text !== '') || !activeNote) {
       addNote(note)
@@ -58,6 +58,10 @@ const Navigation: React.FC<NavigationProps> = ({
   })
 
   useKey('ctrl+backspace', () => {
+    deleteNoteHandler()
+  })
+
+  useKey('ctrl+w', () => {
     deleteNoteHandler()
   })
 

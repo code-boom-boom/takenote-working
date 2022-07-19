@@ -8,8 +8,8 @@ import { loadCategories, loadNotes } from '../actions'
 import { connect } from 'react-redux'
 
 interface AppProps {
-  loadNotes: Function
-  loadCategories: Function
+  loadNotes: () => void
+  loadCategories: () => void
 }
 
 const App: React.FC<AppProps> = ({ loadNotes, loadCategories }) => {
