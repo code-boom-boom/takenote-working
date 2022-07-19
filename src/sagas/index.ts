@@ -1,6 +1,6 @@
 import { put, all, takeLatest } from 'redux-saga/effects'
 import { ActionType } from 'constants/enums'
-import { requestNotes, saveState } from '../api'
+import { requestCategories, requestNotes, saveState } from '../api'
 
 function* fetchNotes() {
   try {
@@ -10,6 +10,17 @@ function* fetchNotes() {
   } catch (error) {
     // @ts-ignore
     yield put({ type: ActionType.LOAD_NOTES_ERROR, payload: error.message })
+  }
+}
+
+function* fetchCategories() {
+  try {
+    const data = yield requestCategories()
+
+    yield put({ type: ActionType.LOAD_CATEGORIES_SUCCESS, payload: data })
+  } catch (error) {
+    // @ts-ignore
+    yield put({ type: ActionType.LOAD_CATEGORIES_ERROR, payload: error.message })
   }
 }
 
@@ -24,11 +35,12 @@ function* syncState(state) {
   }
 }
 
-export function* noteSaga() {
+export function* allSagas() {
   yield all([
     takeLatest(ActionType.LOAD_NOTES, fetchNotes),
+    takeLatest(ActionType.LOAD_CATEGORIES, fetchCategories),
     takeLatest(ActionType.SYNC_STATE, syncState),
   ])
 }
 
-export default noteSaga
+export default allSagas
