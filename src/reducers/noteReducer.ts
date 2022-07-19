@@ -6,23 +6,40 @@ const initialState: NoteState = {
   active: '',
   loading: true,
   error: '',
+  syncing: false,
 }
 
 const noteReducer = (state = initialState, action): NoteState => {
   switch (action.type) {
     case ActionType.LOAD_NOTES:
-      return state
+      return initialState
     case ActionType.LOAD_NOTES_SUCCESS:
       return {
         ...state,
         notes: action.payload,
-        active: action.payload[0].id,
+        active: action.payload.length > 0 ? action.payload[0].id : '',
         loading: false,
       }
     case ActionType.LOAD_NOTES_ERROR:
       return {
         ...state,
         loading: false,
+        error: action.payload,
+      }
+    case ActionType.SYNC_STATE:
+      return {
+        ...state,
+        syncing: true,
+      }
+    case ActionType.SYNC_STATE_SUCCESS:
+      return {
+        ...state,
+        syncing: false,
+      }
+    case ActionType.SYNC_STATE_ERROR:
+      return {
+        ...state,
+        syncing: false,
         error: action.payload,
       }
     case ActionType.SWAP_NOTE:
