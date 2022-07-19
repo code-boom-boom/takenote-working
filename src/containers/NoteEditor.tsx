@@ -29,7 +29,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
   } else {
     return (
       <CodeMirror
-        className="editor"
+        className="editor mousetrap"
         value={activeNote.text}
         options={options}
         editorDidMount={editor => {
