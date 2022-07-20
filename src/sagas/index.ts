@@ -17,7 +17,6 @@ function* fetchNotes() {
 
     yield put(loadNotesSuccess(notes))
   } catch (error) {
-    // @ts-ignore
     yield put(loadNotesError(error.message))
   }
 }
@@ -28,7 +27,6 @@ function* fetchCategories() {
 
     yield put(loadCategoriesSuccess(categories))
   } catch (error) {
-    // @ts-ignore
     yield put(loadCategoriesError(error.message))
   }
 }
@@ -39,7 +37,6 @@ function* postState({ payload: { notes, categories } }: SyncStateAction) {
 
     yield put(syncStateSuccess())
   } catch (error) {
-    // @ts-ignore
     yield put(syncStateError(error.message))
   }
 }
