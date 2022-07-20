@@ -23,10 +23,10 @@ const App: React.FC<AppProps> = ({ loadNotes, loadCategories }) => {
 
   return (
     <div className="app">
+      <Navigation />
       <CategoryList />
       <NoteList />
       <NoteEditor />
-      <Navigation />
     </div>
   )
 }
