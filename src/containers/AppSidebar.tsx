@@ -29,7 +29,9 @@ const AppSidebar: React.FC<AppProps> = ({
     !addingTempCategory && setAddingTempCategory(true)
   }
 
-  const onSubmit = event => {
+  const onSubmit = (
+    event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLInputElement>
+  ) => {
     event.preventDefault()
 
     const category = { id: kebabCase(tempCategory), name: tempCategory }
