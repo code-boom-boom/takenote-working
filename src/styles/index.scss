@@ -147,10 +147,6 @@ code {
         }
       }
 
-      &.active {
-        background: #bbb;
-      }
-
       .category-options {
         color: transparent;
         z-index: 1;
@@ -159,10 +155,6 @@ code {
         &.active {
           color: #bbb;
         }
-      }
-
-      &.active {
-        background: #222 !important;
       }
     }
   }
