@@ -39,7 +39,9 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
             lastUpdated: moment().format(),
           })
         }}
-        onChange={(editor, data, value) => {}}
+        onChange={(editor, data, value) => {
+          editor.focus()
+        }}
       />
     )
   }
