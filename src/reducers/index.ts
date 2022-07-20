@@ -1,14 +1,13 @@
-import { combineReducers } from 'redux'
+import { combineReducers, Reducer } from 'redux'
 import noteReducer from 'reducers/noteReducer'
 import categoryReducer from './categoryReducer'
 import syncReducer from './syncReducer'
+import { ApplicationState } from '../types'
 
-const rootReducer = combineReducers({
+const rootReducer: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   noteState: noteReducer,
   categoryState: categoryReducer,
   syncState: syncReducer,
 })
-
-export type AppState = ReturnType<typeof rootReducer>
 
 export default rootReducer

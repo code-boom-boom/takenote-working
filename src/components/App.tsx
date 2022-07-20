@@ -31,11 +31,9 @@ const App: React.FC<AppProps> = ({ loadNotes, loadCategories }) => {
   )
 }
 
-const mapStateToProps = state => ({})
-
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   loadNotes: () => dispatch(loadNotes()),
   loadCategories: () => dispatch(loadCategories()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)

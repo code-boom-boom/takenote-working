@@ -1,3 +1,5 @@
+import { CategoryItem, NoteItem } from '../types'
+
 export const requestNotes = () => {
   return new Promise((resolve, reject) => {
     const data = localStorage.getItem('notes') || '[]'
@@ -26,10 +28,10 @@ export const requestCategories = () => {
   })
 }
 
-export const saveState = ({ payload }) => {
+export const saveState = (notes: NoteItem[], categories: CategoryItem[]) => {
   return new Promise((resolve, reject) => {
-    localStorage.setItem('notes', JSON.stringify(payload.notes))
-    localStorage.setItem('categories', JSON.stringify(payload.categories))
+    localStorage.setItem('notes', JSON.stringify(notes))
+    localStorage.setItem('categories', JSON.stringify(categories))
 
     if (false) {
       reject({ message: 'Sync failed' })
