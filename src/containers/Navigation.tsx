@@ -1,5 +1,5 @@
 import React from 'react'
-import { addNote, deleteNote, swapNote, syncState } from 'actions'
+import { addNote, sendNoteToTrash, swapNote, syncState } from 'actions'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
@@ -11,7 +11,7 @@ import moment from 'moment'
 interface NavigationProps {
   addNote: (note: NoteItem) => void
   swapNote: (noteId: string) => void
-  deleteNote: (noteId: string) => void
+  sendNoteToTrash: (noteId: string) => void
   activeNote?: NoteItem
   syncState: (notes: NoteItem[], categories: CategoryItem[]) => void
   notes: NoteItem[]
@@ -23,7 +23,7 @@ const Navigation: React.FC<NavigationProps> = ({
   activeNote,
   addNote,
   swapNote,
-  deleteNote,
+  sendNoteToTrash,
   syncState,
   notes,
   categories,
@@ -45,7 +45,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const deleteNoteHandler = () => {
     if (activeNote) {
-      deleteNote(activeNote.id)
+      sendNoteToTrash(activeNote.id)
     }
   }
 
@@ -55,7 +55,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const downloadNoteHandler = () => {
     if (activeNote) {
-      downloadNote(getNoteTitle(activeNote.text), activeNote.text)
+      downloadNote(getNoteTitle(activeNote.text), activeNote)
     }
   }
 
@@ -104,7 +104,7 @@ const mapStateToProps = (state: ApplicationState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   addNote: (note: NoteItem) => dispatch(addNote(note)),
   swapNote: (noteId: string) => dispatch(swapNote(noteId)),
-  deleteNote: (noteId: string) => dispatch(deleteNote(noteId)),
+  sendNoteToTrash: (noteId: string) => dispatch(sendNoteToTrash(noteId)),
   syncState: (notes: NoteItem[], categories: CategoryItem[]) =>
     dispatch(syncState(notes, categories)),
 })
