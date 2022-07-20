@@ -2,6 +2,8 @@
 
 ## Installation
 
+> Redux DevTools Chrome extension is required for development!
+
 ```bash
 git clone git@github.com:kevinlin-crypto/takenote-working.git
 cd vnote
