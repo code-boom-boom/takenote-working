@@ -12,6 +12,7 @@ import {
 } from '../actions'
 import kebabCase from 'lodash/kebabCase'
 import { Folders } from '../constants/enums'
+import { Book, Folder, Trash2 } from 'react-feather'
 
 interface AppProps {
   addCategory: (category: CategoryItem) => void
@@ -69,6 +70,7 @@ const AppSidebar: React.FC<AppProps> = ({
             swapFolder(Folders.ALL)
           }}
         >
+          <Book size={15} style={{ marginRight: '.5rem' }} />
           Notes
         </div>
         <div
@@ -79,6 +81,7 @@ const AppSidebar: React.FC<AppProps> = ({
             swapFolder(Folders.TRASH)
           }}
         >
+          <Trash2 size={15} style={{ marginRight: '.5rem' }} />
           Trash
         </div>
 
@@ -107,7 +110,10 @@ const AppSidebar: React.FC<AppProps> = ({
                   }
                 }}
               >
-                <div>{category.name}</div>
+                <div className="category-each-name">
+                  <Folder size={15} style={{ marginRight: '.5rem' }} />
+                  {category.name}
+                </div>
                 <div
                   className="category-options"
                   onClick={() => {

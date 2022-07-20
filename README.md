@@ -11,7 +11,7 @@ npm i
 npm start
 ```
 
-## Todos
+## Features
 
 - [x] View all notes
 - [x] View notes by category
@@ -36,19 +36,29 @@ npm start
 - [ ] Basic settings
     - [ ] Light/dark mode
     - [ ] Frequency of polling for sync (polling or inactivity?)
+    - [ ] Keyboard shortcuts
 - [ ] Add authentication (GitHub 0Auth)
 - [ ] Hook up Gist API for storage
 - [ ] Style app
-- [ ] Tabs for notes?
+- [ ] Example note of what you can do
 
 ## Bugs
 
+- [x] New note from cat is in cat
 - [x] Note options in "all notes" displays category its already in
 - [x] Moving note to category does not swap to proper note
 - [x] Do not view trash notes after deleting in categories
-- [ ] Can't restore deleted note
-- [ ] Can't permanently delete note
 - [x] Note not focused if new note keybind event outside of editor
+- [x] Options does not close after change category
+- [ ] No new note from trash
+- [ ] Restore deleted note
+- [ ] Permanently delete note
+- [ ] Can't make keybinding for add category
+
+## Phase 2
+
+- [ ] Tabs for notes?
+- [ ] Dropbox integration?
 
 ## Redux
 
