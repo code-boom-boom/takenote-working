@@ -9,6 +9,7 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/base16-light.css'
 import 'codemirror/mode/gfm/gfm.js'
 import 'codemirror/addon/selection/active-line'
+import moment from 'moment'
 
 interface NoteEditorProps {
   loading: boolean
@@ -31,7 +32,12 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
           editor.focus()
         }}
         onBeforeChange={(editor, data, value) => {
-          updateNote({ id: activeNote.id, text: value, created: '', lastUpdated: '' })
+          updateNote({
+            id: activeNote.id,
+            text: value,
+            created: activeNote.created,
+            lastUpdated: moment().format(),
+          })
         }}
         onChange={(editor, data, value) => {}}
       />
@@ -41,7 +47,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
 
 const mapStateToProps = (state: ApplicationState) => ({
   loading: state.noteState.loading,
-  activeNote: state.noteState.notes.find(note => note.id === state.noteState.active),
+  activeNote: state.noteState.notes.find(note => note.id === state.noteState.activeNoteId),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

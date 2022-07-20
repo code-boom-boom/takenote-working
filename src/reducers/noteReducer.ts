@@ -3,7 +3,7 @@ import { NotesActionTypes, NoteState } from '../types'
 
 const initialState: NoteState = {
   notes: [],
-  active: '',
+  activeNoteId: '',
   loading: true,
   error: '',
 }
@@ -16,7 +16,7 @@ const noteReducer = (state = initialState, action: NotesActionTypes): NoteState 
       return {
         ...state,
         notes: action.payload,
-        active: action.payload.length > 0 ? action.payload[0].id : '',
+        activeNoteId: action.payload.length > 0 ? action.payload[0].id : '',
         loading: false,
       }
     case Actions.LOAD_NOTES_ERROR:
@@ -28,17 +28,17 @@ const noteReducer = (state = initialState, action: NotesActionTypes): NoteState 
     case Actions.SWAP_NOTE:
       return {
         ...state,
-        active: action.payload,
+        activeNoteId: action.payload,
       }
     case Actions.PRUNE_NOTES:
       return {
         ...state,
-        notes: state.notes.filter(note => note.text !== '' || note.id === state.active),
+        notes: state.notes.filter(note => note.text !== '' || note.id === state.activeNoteId),
       }
     case Actions.ADD_NOTE:
       return {
         ...state,
-        notes: [...state.notes, action.payload],
+        notes: [action.payload, ...state.notes],
       }
     case Actions.UPDATE_NOTE:
       return {
@@ -48,8 +48,8 @@ const noteReducer = (state = initialState, action: NotesActionTypes): NoteState 
             ? {
                 id: note.id,
                 text: action.payload.text,
-                created: '',
-                lastUpdated: '',
+                created: note.created,
+                lastUpdated: action.payload.lastUpdated,
               }
             : note
         ),
@@ -67,7 +67,7 @@ const noteReducer = (state = initialState, action: NotesActionTypes): NoteState 
       return {
         ...state,
         notes: state.notes.filter(note => note.id !== action.payload),
-        active: newActiveNoteId,
+        activeNoteId: newActiveNoteId,
       }
     default:
       return state
