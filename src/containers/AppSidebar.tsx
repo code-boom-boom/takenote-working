@@ -16,6 +16,7 @@ import kebabCase from 'lodash/kebabCase'
 import { Folders } from '../constants/enums'
 import {
   Book,
+  Bookmark,
   Cloud,
   Folder,
   Plus,
@@ -113,6 +114,17 @@ const AppSidebar: React.FC<AppProps> = ({
         >
           <Book size={15} style={{ marginRight: '.5rem' }} color={iconColor} />
           All Notes
+        </div>
+        <div
+          className={
+            activeFolder === Folders.FAVORITES ? 'app-sidebar-link active' : 'app-sidebar-link'
+          }
+          onClick={() => {
+            swapFolder(Folders.FAVORITES)
+          }}
+        >
+          <Bookmark size={15} style={{ marginRight: '.5rem' }} color={iconColor} />
+          Favorites
         </div>
         <div
           className={
