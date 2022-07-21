@@ -7,7 +7,7 @@ import { getNoteTitle } from '../helpers'
 import { Folders } from '../constants/enums'
 import uuid from 'uuid/v4'
 import moment from 'moment'
-import { PlusCircle } from 'react-feather'
+import { MoreHorizontal, PlusCircle } from 'react-feather'
 import NoteOptions from './NoteOptions'
 
 interface NoteListProps {
@@ -98,7 +98,7 @@ const NoteList: React.FC<NoteListProps> = ({
                 className={noteOptionsId === note.id ? 'note-options active ' : 'note-options'}
                 onClick={event => handleNoteOptionsClick(event, note.id)}
               >
-                ...
+                <MoreHorizontal size={15} />
               </div>
               {noteOptionsId === note.id && (
                 <div
