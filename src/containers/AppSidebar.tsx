@@ -14,18 +14,7 @@ import {
 } from '../actions'
 import kebabCase from 'lodash/kebabCase'
 import { Folders } from '../constants/enums'
-import {
-  Book,
-  Bookmark,
-  Cloud,
-  Folder,
-  Plus,
-  PlusCircle,
-  Settings,
-  Trash2,
-  UploadCloud,
-  X,
-} from 'react-feather'
+import { Book, Bookmark, Folder, Plus, Settings, Trash2, UploadCloud, X } from 'react-feather'
 import uuid from 'uuid/v4'
 import moment from 'moment'
 

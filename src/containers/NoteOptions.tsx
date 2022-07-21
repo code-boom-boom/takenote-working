@@ -1,28 +1,21 @@
 import React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import uuid from 'uuid/v4'
-import moment from 'moment'
-import { Bookmark, Download, Trash, X } from 'react-feather'
-import { addNote, swapNote, sendNoteToTrash, syncState, toggleFavoriteNote } from 'actions'
-import { NoteItem, CategoryItem, ApplicationState } from 'types'
+import { Bookmark, Download, Trash } from 'react-feather'
+import { sendNoteToTrash, toggleFavoriteNote } from 'actions'
+import { NoteItem, ApplicationState } from 'types'
 import { getNoteTitle, downloadNote } from 'helpers'
-import { useKey } from 'helpers/hooks'
 
 interface NoteOptionsProps {
   sendNoteToTrash: (noteId: string) => void
   toggleFavoriteNote: (noteId: string) => void
   clickedNote: NoteItem
-  notes: NoteItem[]
-  categories: CategoryItem[]
 }
 
 const NoteOptions: React.FC<NoteOptionsProps> = ({
   sendNoteToTrash,
   toggleFavoriteNote,
   clickedNote,
-  notes,
-  categories,
 }) => {
   const trashNoteHandler = () => {
     if (clickedNote && !clickedNote.trash) {
@@ -32,10 +25,6 @@ const NoteOptions: React.FC<NoteOptionsProps> = ({
 
   const favoriteNoteHandler = () => {
     toggleFavoriteNote(clickedNote.id)
-  }
-
-  const syncNotesHandler = () => {
-    syncState(notes, categories)
   }
 
   const downloadNoteHandler = () => {
@@ -65,8 +54,6 @@ const NoteOptions: React.FC<NoteOptionsProps> = ({
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
-  notes: state.noteState.notes,
-  categories: state.categoryState.categories,
   activeCategoryId: state.noteState.activeCategoryId,
 })
 
