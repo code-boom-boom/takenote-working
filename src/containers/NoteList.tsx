@@ -11,8 +11,6 @@ import { PlusCircle } from 'react-feather'
 import NoteOptions from './NoteOptions'
 
 interface NoteListProps {
-  activeNote?: NoteItem
-  addNote: (note: NoteItem) => void
   activeCategoryId: string
   activeNoteId: string
   notes: NoteItem[]
@@ -25,9 +23,7 @@ interface NoteListProps {
 }
 
 const NoteList: React.FC<NoteListProps> = ({
-  addNote,
   activeCategoryId,
-  activeNote,
   activeNoteId,
   notes,
   filteredNotes,
@@ -59,21 +55,6 @@ const NoteList: React.FC<NoteListProps> = ({
     }
   }
 
-  const newNoteHandler = () => {
-    const note: NoteItem = {
-      id: uuid(),
-      text: '',
-      created: moment().format(),
-      lastUpdated: moment().format(),
-      category: activeCategoryId ? activeCategoryId : undefined,
-    }
-
-    if ((activeNote && activeNote.text !== '') || !activeNote) {
-      addNote(note)
-      swapNote(note.id)
-    }
-  }
-
   const searchNotes = (event: React.ChangeEvent<HTMLInputElement>) => {
     const filteredResults = filteredNotes.filter(
       note => note.text.toLowerCase().search(event.target.value.toLowerCase()) !== -1
@@ -97,11 +78,6 @@ const NoteList: React.FC<NoteListProps> = ({
         onChange={searchNotes}
         className="searchbar"
       /> */}
-      <div className="add-note">
-        <div>
-          <PlusCircle size={20} onClick={newNoteHandler} />
-        </div>
-      </div>
       <div className="note-list">
         {filteredNotes.map(note => {
           const noteTitle = getNoteTitle(note.text)
@@ -193,7 +169,6 @@ const mapStateToProps = (state: ApplicationState) => {
     activeNoteId: noteState.activeNoteId,
     notes: noteState.notes,
     filteredNotes,
-    activeNote: state.noteState.notes.find(note => note.id === state.noteState.activeNoteId),
     filteredCategories: categoryState.categories.filter(
       category => category.id !== noteState.activeCategoryId
     ),
@@ -201,7 +176,6 @@ const mapStateToProps = (state: ApplicationState) => {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addNote: (note: NoteItem) => dispatch(addNote(note)),
   swapNote: (noteId: string) => dispatch(swapNote(noteId)),
   swapCategory: (categoryId: string) => dispatch(swapCategory(categoryId)),
   pruneNotes: () => dispatch(pruneNotes()),
