@@ -7,9 +7,8 @@ import { ApplicationState, CategoryItem, NoteItem } from '../types'
 import { downloadNote, getNoteTitle } from '../helpers'
 import { useKey } from '../helpers/hooks'
 import moment from 'moment'
-import { Cloud, Download, Plus, X } from 'react-feather'
 
-interface NavigationProps {
+interface KeyboardShortcutsProps {
   addNote: (note: NoteItem) => void
   swapNote: (noteId: string) => void
   sendNoteToTrash: (noteId: string) => void
@@ -21,7 +20,7 @@ interface NavigationProps {
   syncing: boolean
 }
 
-const Navigation: React.FC<NavigationProps> = ({
+const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
   activeNote,
   activeCategoryId,
   addNote,
@@ -75,26 +74,11 @@ const Navigation: React.FC<NavigationProps> = ({
     syncNoteHandler()
   })
 
-  return (
-    <nav className="navigation">
-      <div className="nav-button" onClick={newNoteHandler}>
-        <Plus />
-        New Note
-      </div>
-      <div className="nav-button" onClick={trashNoteHandler}>
-        <X />
-        Delete Note
-      </div>
-      <div className="nav-button" onClick={downloadNoteHandler}>
-        <Download />
-        Download Note
-      </div>
-      <div className="nav-button" onClick={syncNoteHandler}>
-        <Cloud />
-        Sync notes
-      </div>
-    </nav>
-  )
+  useKey('ctrl+d', () => {
+    downloadNoteHandler()
+  })
+
+  return null
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
@@ -113,4 +97,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(syncState(notes, categories)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
+export default connect(mapStateToProps, mapDispatchToProps)(KeyboardShortcuts)

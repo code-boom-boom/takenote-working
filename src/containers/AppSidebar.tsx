@@ -12,7 +12,7 @@ import {
 } from '../actions'
 import kebabCase from 'lodash/kebabCase'
 import { Folders } from '../constants/enums'
-import { Book, Folder, Trash2 } from 'react-feather'
+import { Book, Folder, Trash2, X } from 'react-feather'
 
 interface AppProps {
   addCategory: (category: CategoryItem) => void
@@ -124,7 +124,7 @@ const AppSidebar: React.FC<AppProps> = ({
                     swapNote(newNoteId)
                   }}
                 >
-                  X
+                  <X size={12} />
                 </div>
               </div>
             )
