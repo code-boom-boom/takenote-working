@@ -5,9 +5,7 @@ import { addCategoryToNote, addNote, pruneNotes, swapCategory, swapNote } from '
 import { ApplicationState, CategoryItem, NoteItem } from '../types'
 import { getNoteTitle } from '../helpers'
 import { Folders } from '../constants/enums'
-import uuid from 'uuid/v4'
-import moment from 'moment'
-import { MoreHorizontal, PlusCircle } from 'react-feather'
+import { MoreHorizontal } from 'react-feather'
 import NoteOptions from './NoteOptions'
 
 interface NoteListProps {
@@ -152,7 +150,7 @@ const NoteList: React.FC<NoteListProps> = ({
 const mapStateToProps = (state: ApplicationState) => {
   const { noteState, categoryState } = state
 
-  let filteredNotes: NoteItem[] = []
+  let filteredNotes: NoteItem[]
 
   if (noteState.activeFolder === Folders.CATEGORY) {
     filteredNotes = noteState.notes.filter(note => note.category === noteState.activeCategoryId)
@@ -163,6 +161,12 @@ const mapStateToProps = (state: ApplicationState) => {
       note => !note.trash && note.category === noteState.activeCategoryId
     )
   }
+
+  filteredNotes.sort(function(a, b) {
+    let dateA = new Date(a.lastUpdated)
+    let dateB = new Date(b.lastUpdated)
+    return dateA > dateB ? -1 : dateA < dateB ? 1 : 0
+  })
 
   return {
     activeCategoryId: noteState.activeCategoryId,
