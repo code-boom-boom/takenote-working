@@ -5,10 +5,9 @@ import { connect } from 'react-redux'
 import NoteList from 'containers/NoteList'
 import NoteEditor from 'containers/NoteEditor'
 import KeyboardShortcuts from 'containers/KeyboardShortcuts'
-
-import { loadCategories, loadNotes } from '../actions'
-import { KeyboardProvider } from '../contexts/KeyboardContext'
-import { ApplicationState } from '../types'
+import { KeyboardProvider } from 'contexts/KeyboardContext'
+import { ApplicationState } from 'types'
+import { loadCategories, loadNotes } from 'actions'
 
 import CategoryList from './AppSidebar'
 
