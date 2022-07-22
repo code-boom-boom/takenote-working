@@ -1,5 +1,5 @@
 import React from 'react'
-import { addNote, toggleTrashedNote, swapNote, syncState } from 'actions'
+import { addNote, toggleTrashedNote, swapNote, syncState, toggleDarkTheme } from 'actions'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { ApplicationState, CategoryItem, NoteItem } from '../types'
@@ -18,6 +18,7 @@ interface KeyboardShortcutsProps {
   notes: NoteItem[]
   categories: CategoryItem[]
   syncing: boolean
+  toggleDarkTheme: () => void
 }
 
 const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
@@ -30,6 +31,7 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
   syncState,
   notes,
   categories,
+  toggleDarkTheme,
 }) => {
   const { addingTempCategory, setAddingTempCategory } = useKeyboard()
   const newNoteHandler = () => {
@@ -61,6 +63,10 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
     }
   }
 
+  const toggleDarkThemeHandler = () => {
+    toggleDarkTheme()
+  }
+
   useKey('ctrl+n', () => {
     newNoteHandler()
   })
@@ -81,6 +87,10 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
     downloadNoteHandler()
   })
 
+  useKey('ctrl+t', () => {
+    toggleDarkThemeHandler()
+  })
+
   return null
 }
 
@@ -99,6 +109,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   toggleTrashedNote: (noteId: string) => dispatch(toggleTrashedNote(noteId)),
   syncState: (notes: NoteItem[], categories: CategoryItem[]) =>
     dispatch(syncState(notes, categories)),
+  toggleDarkTheme: () => dispatch(toggleDarkTheme()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KeyboardShortcuts)
