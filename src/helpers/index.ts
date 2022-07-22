@@ -1,10 +1,11 @@
-import { NoteItem } from '../types'
 import uuid from 'uuid/v4'
 import moment from 'moment'
+
+import { NoteItem } from '../types'
 import { Folders } from '../constants/enums'
 
 export function getNoteTitle(text: string): string {
-  const noteTitleRegEx = /[\w'?!. ]{1,50}/
+  const noteTitleRegEx = /[\w'?!., ]{1,50}/
 
   let noteTitle: string
   let noteText = text.match(noteTitleRegEx)
