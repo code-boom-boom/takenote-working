@@ -1,5 +1,6 @@
 # 📝 TakeNote
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-) [![Build Status](https://travis-ci.org/taniarascia/takenote.svg?branch=master)](https://travis-ci.org/taniarascia/takenote) [![Coverage Status](https://coveralls.io/repos/github/taniarascia/takenote/badge.svg?branch=master)](https://coveralls.io/github/taniarascia/takenote?branch=master)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-) [![Build Status](https://travis-ci.org/taniarascia/takenote.svg?branch=master)](https://travis-ci.org/taniarascia/takenote) [![Coverage Status](https://coveralls.io/repos/github/taniarascia/takenote/badge.svg?branch=master)](https://coveralls.io/github/taniarascia/takenote?branch=master)
 
 A web-based note-taking app with GitHub sync and Markdown support. (WIP)
 
@@ -38,17 +39,21 @@ npm start
     <td align="center"><a href="https://github.com/hankolsen"><img src="https://avatars3.githubusercontent.com/u/1008390?v=4" width="50px;" alt="hankolsen"/><br /><sub><b>hankolsen</b></sub></a><br /><a href="https://github.com/taniarascia/takenote/commits?author=hankolsen" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/joseph-perez"><img src="https://avatars0.githubusercontent.com/u/7772649?v=4" width="50px;" alt="Joseph Perez"/><br /><sub><b>Joseph Perez</b></sub></a><br /><a href="https://github.com/taniarascia/takenote/commits?author=joseph-perez" title="Code">💻</a></td>
     <td align="center"><a href="https://cutting.scot"><img src="https://avatars0.githubusercontent.com/u/118328?v=4" width="50px;" alt="Paul"/><br /><sub><b>Paul</b></sub></a><br /><a href="https://github.com/taniarascia/takenote/commits?author=dagda1" title="Code">💻</a> <a href="https://github.com/taniarascia/takenote/commits?author=dagda1" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://martinbrosenberg.com/"><img src="https://avatars2.githubusercontent.com/u/2382147?v=4" width="50px;" alt="Martin Rosenberg"/><br /><sub><b>Martin Rosenberg</b></sub></a><br /><a href="https://github.com/taniarascia/takenote/commits?author=MartinRosenberg" title="Code">💻</a></td>
 </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Contributions of any kind welcome!
 
 ## Author
+
 - [Tania Rascia](https://www.taniarascia.com)
 
 ## License
+
 This project is open source and available under the [MIT License](LICENSE).
