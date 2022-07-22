@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { ApplicationState, CategoryItem, NoteItem } from '../types'
 import { downloadNote, getNoteTitle, newNote } from '../helpers'
 import { useKey } from '../helpers/hooks'
+import { useKeyboard } from '../contexts/KeyboardContext'
 
 interface KeyboardShortcutsProps {
   addNote: (note: NoteItem) => void
@@ -30,6 +31,7 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
   notes,
   categories,
 }) => {
+  const { addingTempCategory, setAddingTempCategory } = useKeyboard()
   const newNoteHandler = () => {
     const note = newNote(activeCategoryId, activeFolder)
 
@@ -37,6 +39,10 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
       addNote(note)
       swapNote(note.id)
     }
+  }
+
+  const newTempCategoryHandler = () => {
+    !addingTempCategory && setAddingTempCategory(true)
   }
 
   const trashNoteHandler = () => {
@@ -57,6 +63,10 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
 
   useKey('ctrl+n', () => {
     newNoteHandler()
+  })
+
+  useKey('ctrl+c', () => {
+    newTempCategoryHandler()
   })
 
   useKey('ctrl+w', () => {
