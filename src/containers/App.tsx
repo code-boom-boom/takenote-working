@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 
@@ -8,8 +9,7 @@ import KeyboardShortcuts from 'containers/KeyboardShortcuts'
 import { KeyboardProvider } from 'contexts/KeyboardContext'
 import { ApplicationState } from 'types'
 import { loadCategories, loadNotes } from 'actions'
-
-import CategoryList from './AppSidebar'
+import CategoryList from 'containers/AppSidebar'
 
 interface AppProps {
   loadNotes: () => void

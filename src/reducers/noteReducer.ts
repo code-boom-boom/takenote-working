@@ -1,6 +1,6 @@
 import { Actions, Folders } from 'constants/enums'
-import { NoteItem, NotesActionTypes, NoteState } from '../types'
-import { sortByLastUpdated } from '../helpers'
+import { NoteItem, NotesActionTypes, NoteState } from 'types'
+import { sortByLastUpdated } from 'helpers'
 
 const initialState: NoteState = {
   notes: [],

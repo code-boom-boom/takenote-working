@@ -2,14 +2,15 @@ import './styles/index.scss'
 
 import React from 'react'
 import { render } from 'react-dom'
-import App from './containers/App'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import history from './utils/history'
 import { applyMiddleware, compose, createStore } from 'redux'
-import rootReducer from 'reducers'
 import createSagaMiddleware from 'redux-saga'
+
+import rootReducer from 'reducers'
 import rootSaga from 'sagas'
+import history from 'utils/history'
+import App from 'containers/App'
 
 const sagaMiddleware = createSagaMiddleware()
 

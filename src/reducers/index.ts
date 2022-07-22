@@ -1,9 +1,11 @@
+// eslint-disable-next-line import/named
 import { combineReducers, Reducer } from 'redux'
+
 import noteReducer from 'reducers/noteReducer'
-import categoryReducer from './categoryReducer'
-import syncReducer from './syncReducer'
-import themeReducer from './themeReducer'
-import { ApplicationState } from '../types'
+import categoryReducer from 'reducers/categoryReducer'
+import syncReducer from 'reducers/syncReducer'
+import themeReducer from 'reducers/themeReducer'
+import { ApplicationState } from 'types'
 
 const rootReducer: Reducer<ApplicationState> = combineReducers<ApplicationState>({
   noteState: noteReducer,

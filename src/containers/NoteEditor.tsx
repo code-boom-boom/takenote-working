@@ -1,17 +1,17 @@
 import React from 'react'
+// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Controlled as CodeMirror } from 'react-codemirror2'
+import moment from 'moment'
 
 import { updateNote } from 'actions'
 import { ApplicationState, NoteItem } from 'types'
 import options from 'constants/codeMirrorOptions'
-
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/base16-light.css'
-import 'codemirror/mode/gfm/gfm.js'
+import 'codemirror/mode/gfm/gfm'
 import 'codemirror/addon/selection/active-line'
-import moment from 'moment'
 
 interface NoteEditorProps {
   loading: boolean

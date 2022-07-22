@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
+// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { addCategoryToNote, pruneNotes, swapCategory, swapNote } from 'actions'
-import { ApplicationState, CategoryItem, NoteItem } from '../types'
-import { getNoteTitle, sortByLastUpdated } from '../helpers'
-import { Folders } from '../constants/enums'
 import { MoreHorizontal } from 'react-feather'
-import NoteOptions from './NoteOptions'
+
+import { addCategoryToNote, pruneNotes, swapCategory, swapNote } from 'actions'
+import { ApplicationState, CategoryItem, NoteItem } from 'types'
+import { getNoteTitle, sortByLastUpdated } from 'helpers'
+import { Folders } from 'constants/enums'
 import { folderMap } from 'constants/index'
+
+import NoteOptions from './NoteOptions'
 
 interface NoteListProps {
   activeFolder: string

@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "build": "react-scripts build",
+    "coveralls": "react-scripts test --ci --coverage --watchAll=false && cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject",
     "postinstall": "patch-package",
     "start": "react-scripts start",

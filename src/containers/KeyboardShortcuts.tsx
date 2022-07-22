@@ -1,11 +1,13 @@
 import React from 'react'
-import { addNote, toggleTrashedNote, swapNote, syncState, toggleDarkTheme } from 'actions'
+// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { ApplicationState, CategoryItem, NoteItem } from '../types'
-import { downloadNote, getNoteTitle, newNote } from '../helpers'
-import { useKey } from '../helpers/hooks'
-import { useKeyboard } from '../contexts/KeyboardContext'
+
+import { addNote, toggleTrashedNote, swapNote, syncState, toggleDarkTheme } from 'actions'
+import { ApplicationState, CategoryItem, NoteItem } from 'types'
+import { downloadNote, getNoteTitle, newNote } from 'helpers'
+import { useKey } from 'helpers/hooks'
+import { useKeyboard } from 'contexts/KeyboardContext'
 
 interface KeyboardShortcutsProps {
   addNote: (note: NoteItem) => void

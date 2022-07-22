@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import kebabCase from 'lodash/kebabCase'
 import { Book, Bookmark, Folder, Plus, Settings, Trash2, UploadCloud, X } from 'react-feather'
 
-import { ApplicationState, CategoryItem, NoteItem } from '../types'
+import { ApplicationState, CategoryItem, NoteItem } from 'types'
 import {
   addCategory,
   addNote,
@@ -14,10 +15,10 @@ import {
   swapFolder,
   swapNote,
   syncState,
-} from '../actions'
-import { Folders } from '../constants/enums'
-import { newNote } from '../helpers'
-import { useKeyboard } from '../contexts/KeyboardContext'
+} from 'actions'
+import { Folders } from 'constants/enums'
+import { newNote } from 'helpers'
+import { useKeyboard } from 'contexts/KeyboardContext'
 
 const iconColor = 'rgba(255, 255, 255, 0.3)'
 

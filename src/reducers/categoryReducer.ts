@@ -1,5 +1,5 @@
-import { CategoryActionTypes, CategoryState } from '../types'
-import { Actions } from '../constants/enums'
+import { CategoryActionTypes, CategoryState } from 'types'
+import { Actions } from 'constants/enums'
 
 const initialState: CategoryState = {
   categories: [],

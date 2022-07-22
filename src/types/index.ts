@@ -2,7 +2,7 @@
 // Items
 //==============================================================================
 
-import { Actions } from '../constants/enums'
+import { Actions } from 'constants/enums'
 
 export interface NoteItem {
   id: string
