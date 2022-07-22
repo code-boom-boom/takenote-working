@@ -14,6 +14,7 @@ export const renderWithRouter = (
 ) => {
   const sagaMiddleware = createSagaMiddleware();
   
+  // @ts-ignore
   const store = createStore(rootReducer, {}, compose(
     applyMiddleware(sagaMiddleware)));
   
