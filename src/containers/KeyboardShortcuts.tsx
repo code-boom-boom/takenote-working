@@ -1,5 +1,5 @@
 import React from 'react'
-import { addNote, sendNoteToTrash, swapNote, syncState } from 'actions'
+import { addNote, toggleTrashedNote, swapNote, syncState } from 'actions'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { ApplicationState, CategoryItem, NoteItem } from '../types'
@@ -10,7 +10,7 @@ import { useKeyboard } from '../contexts/KeyboardContext'
 interface KeyboardShortcutsProps {
   addNote: (note: NoteItem) => void
   swapNote: (noteId: string) => void
-  sendNoteToTrash: (noteId: string) => void
+  toggleTrashedNote: (noteId: string) => void
   activeNote?: NoteItem
   activeCategoryId: string
   activeFolder: string
@@ -26,7 +26,7 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
   activeFolder,
   addNote,
   swapNote,
-  sendNoteToTrash,
+  toggleTrashedNote,
   syncState,
   notes,
   categories,
@@ -46,8 +46,8 @@ const KeyboardShortcuts: React.FC<KeyboardShortcutsProps> = ({
   }
 
   const trashNoteHandler = () => {
-    if (activeNote && !activeNote.trash) {
-      sendNoteToTrash(activeNote.id)
+    if (activeNote) {
+      toggleTrashedNote(activeNote.id)
     }
   }
 
@@ -96,7 +96,7 @@ const mapStateToProps = (state: ApplicationState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   addNote: (note: NoteItem) => dispatch(addNote(note)),
   swapNote: (noteId: string) => dispatch(swapNote(noteId)),
-  sendNoteToTrash: (noteId: string) => dispatch(sendNoteToTrash(noteId)),
+  toggleTrashedNote: (noteId: string) => dispatch(toggleTrashedNote(noteId)),
   syncState: (notes: NoteItem[], categories: CategoryItem[]) =>
     dispatch(syncState(notes, categories)),
 })
