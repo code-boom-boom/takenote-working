@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
+import kebabCase from 'lodash/kebabCase'
+import { Book, Bookmark, Folder, Plus, Settings, Trash2, UploadCloud, X } from 'react-feather'
+
 import { ApplicationState, CategoryItem, NoteItem } from '../types'
 import {
   addCategory,
@@ -12,9 +15,7 @@ import {
   swapNote,
   syncState,
 } from '../actions'
-import kebabCase from 'lodash/kebabCase'
 import { Folders } from '../constants/enums'
-import { Book, Bookmark, Folder, Plus, Settings, Trash2, UploadCloud, X } from 'react-feather'
 import { newNote } from '../helpers'
 import { useKeyboard } from '../contexts/KeyboardContext'
 

@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import NoteList from 'containers/NoteList'
 import NoteEditor from 'containers/NoteEditor'
 import KeyboardShortcuts from 'containers/KeyboardShortcuts'
-import CategoryList from './AppSidebar'
-import { Dispatch } from 'redux'
+
 import { loadCategories, loadNotes } from '../actions'
-import { connect } from 'react-redux'
 import { KeyboardProvider } from '../contexts/KeyboardContext'
 import { ApplicationState } from '../types'
+
+import CategoryList from './AppSidebar'
 
 interface AppProps {
   loadNotes: () => void
