@@ -6,6 +6,7 @@ import CategoryList from './AppSidebar'
 import { Dispatch } from 'redux'
 import { loadCategories, loadNotes } from '../actions'
 import { connect } from 'react-redux'
+import { KeyboardProvider } from '../contexts/KeyboardContext'
 
 interface AppProps {
   loadNotes: () => void
@@ -23,10 +24,12 @@ const App: React.FC<AppProps> = ({ loadNotes, loadCategories }) => {
 
   return (
     <div className="app">
-      <CategoryList />
-      <NoteList />
-      <NoteEditor />
-      <KeyboardShortcuts />
+      <KeyboardProvider>
+        <CategoryList />
+        <NoteList />
+        <NoteEditor />
+        <KeyboardShortcuts />
+      </KeyboardProvider>
     </div>
   )
 }
