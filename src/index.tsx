@@ -1,7 +1,8 @@
+import './styles/index.scss'
+
 import React from 'react'
 import { render } from 'react-dom'
 import App from './containers/App'
-import './styles/index.scss'
 import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import history from './utils/history'
@@ -12,13 +13,8 @@ import rootSaga from 'sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(sagaMiddleware),
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-  )
-)
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
 
 sagaMiddleware.run(rootSaga)
 
