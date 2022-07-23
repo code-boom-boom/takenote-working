@@ -190,7 +190,9 @@ const AppSidebar: React.FC<AppProps> = ({
       </section>
       <section className="app-sidebar-actions">
         <div>
-          <Plus className="action-button" size={18} color={iconColor} onClick={newNoteHandler} />
+          {activeFolder !== Folders.TRASH && (
+            <Plus className="action-button" size={18} color={iconColor} onClick={newNoteHandler} />
+          )}
           <UploadCloud
             size={18}
             className="action-button"
