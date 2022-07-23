@@ -1,29 +1,27 @@
 import React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { ArrowUp, Bookmark, Download, Trash } from 'react-feather'
+import { ArrowUp, Bookmark, Download, Trash, X } from 'react-feather'
 
-import { toggleTrashedNote, toggleFavoriteNote } from 'actions'
+import { toggleTrashedNote, toggleFavoriteNote, deleteNote } from 'actions'
 import { NoteItem, ApplicationState } from 'types'
 import { getNoteTitle, downloadNote } from 'helpers'
 
 export interface NoteOptionsProps {
   clickedNote: NoteItem
+  deleteNote: (noteId: string) => void
   toggleTrashedNote: (noteId: string) => void
   toggleFavoriteNote: (noteId: string) => void
 }
 
 const NoteOptions: React.FC<NoteOptionsProps> = ({
   clickedNote,
+  deleteNote,
   toggleTrashedNote,
   toggleFavoriteNote,
 }) => {
-  const trashNoteHandler = () => {
-    toggleTrashedNote(clickedNote.id)
-  }
-
-  const favoriteNoteHandler = () => {
-    toggleFavoriteNote(clickedNote.id)
+  const deleteNoteHandler = () => {
+    deleteNote(clickedNote.id)
   }
 
   const downloadNoteHandler = () => {
@@ -32,27 +30,39 @@ const NoteOptions: React.FC<NoteOptionsProps> = ({
     }
   }
 
+  const favoriteNoteHandler = () => {
+    toggleFavoriteNote(clickedNote.id)
+  }
+
+  const trashNoteHandler = () => {
+    toggleTrashedNote(clickedNote.id)
+  }
+
   return (
     <nav className="note-options-nav" data-testid="note-options-nav">
-      {!clickedNote.trash && (
-        <div className="nav-button" onClick={favoriteNoteHandler}>
-          <Bookmark size={15} />
-          {clickedNote.favorite ? 'Remove Favorite' : 'Mark as Favorite'}
-        </div>
-      )}
-      <div className="nav-button" onClick={trashNoteHandler}>
-        {clickedNote.trash ? (
-          <>
+      {clickedNote.trash ? (
+        <>
+          <div className="nav-button" onClick={deleteNoteHandler}>
+            <X size={15} />
+            Delete permanently
+          </div>
+          <div className="nav-button" onClick={trashNoteHandler}>
             <ArrowUp size={15} />
             Restore from trash
-          </>
-        ) : (
-          <>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="nav-button" onClick={favoriteNoteHandler}>
+            <Bookmark size={15} />
+            {clickedNote.favorite ? 'Remove Favorite' : 'Mark as Favorite'}
+          </div>
+          <div className="nav-button" onClick={trashNoteHandler}>
             <Trash size={15} />
             Move to trash
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
       <div className="nav-button" onClick={downloadNoteHandler}>
         <Download size={15} />
         Download
@@ -66,6 +76,7 @@ const mapStateToProps = (state: ApplicationState) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  deleteNote: (noteId: string) => dispatch(deleteNote(noteId)),
   toggleTrashedNote: (noteId: string) => dispatch(toggleTrashedNote(noteId)),
   toggleFavoriteNote: (noteId: string) => dispatch(toggleFavoriteNote(noteId)),
 })
