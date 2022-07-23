@@ -6,9 +6,9 @@ import moment from 'moment'
 
 import { updateNote } from 'actions'
 import { ApplicationState, NoteItem } from 'types'
-import options from 'constants/codeMirrorOptions'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/base16-light.css'
+import 'codemirror/theme/zenburn.css'
 import 'codemirror/mode/gfm/gfm'
 import 'codemirror/addon/selection/active-line'
 
@@ -16,9 +16,22 @@ interface NoteEditorProps {
   loading: boolean
   activeNote?: NoteItem
   updateNote: (note: NoteItem) => void
+  codeMirrorOptions: {
+    mode: string
+    theme: string
+    lineNumbers: boolean
+    lineWrapping: boolean
+    styleActiveLine: { nonEmpty: boolean }
+    viewportMargin: number
+  }
 }
 
-const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote }) => {
+const NoteEditor: React.FC<NoteEditorProps> = ({
+  loading,
+  activeNote,
+  updateNote,
+  codeMirrorOptions,
+}) => {
   if (loading) {
     return <div className="empty-editor vcenter">Loading...</div>
   } else if (!activeNote) {
@@ -28,7 +41,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
       <CodeMirror
         className="editor mousetrap"
         value={activeNote.text}
-        options={options}
+        options={codeMirrorOptions}
         editorDidMount={editor => {
           editor.focus()
           editor.setCursor(0)
@@ -54,6 +67,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ loading, activeNote, updateNote
 const mapStateToProps = (state: ApplicationState) => ({
   loading: state.noteState.loading,
   activeNote: state.noteState.notes.find(note => note.id === state.noteState.activeNoteId),
+  codeMirrorOptions: state.settingsState.codeMirrorOptions,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

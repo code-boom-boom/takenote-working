@@ -9,6 +9,7 @@ import { KeyboardProvider } from 'contexts/KeyboardContext'
 import { ApplicationState } from 'types'
 import { loadCategories, loadNotes } from 'actions'
 import CategoryList from 'containers/AppSidebar'
+import SettingsModal from './SettingsModal'
 
 interface AppProps {
   loadNotes: () => void
@@ -38,6 +39,7 @@ const App: React.FC<AppProps> = ({ loadNotes, loadCategories, dark }) => {
         <NoteList />
         <NoteEditor />
         <KeyboardShortcuts />
+        <SettingsModal />
       </KeyboardProvider>
     </div>
   )
