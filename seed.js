@@ -85,4 +85,3 @@ const notes = [
 
 localStorage.setItem('categories', JSON.stringify(categories))
 localStorage.setItem('notes', JSON.stringify(notes))
-window.location.reload()

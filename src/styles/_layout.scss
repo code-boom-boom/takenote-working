@@ -1,0 +1,19 @@
+.app {
+  display: grid;
+  grid-template-areas: 'app-sidebar note-sidebar editor editor';
+  grid-template-columns: $app-sidebar-width $note-sidebar-width auto;
+  height: 100vh;
+}
+
+.note-sidebar {
+  grid-area: note-sidebar;
+}
+
+.app-sidebar {
+  grid-area: app-sidebar;
+  overflow-y: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
