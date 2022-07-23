@@ -1,5 +1,4 @@
 import React from 'react'
-// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { ArrowUp, Bookmark, Download, Trash } from 'react-feather'

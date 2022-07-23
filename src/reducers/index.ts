@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import { combineReducers, Reducer } from 'redux'
 
 import noteReducer from 'reducers/noteReducer'

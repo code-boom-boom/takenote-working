@@ -1,5 +1,4 @@
 import React from 'react'
-// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Controlled as CodeMirror } from 'react-codemirror2'

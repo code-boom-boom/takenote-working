@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-// eslint-disable-next-line import/named
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { MoreHorizontal } from 'react-feather'

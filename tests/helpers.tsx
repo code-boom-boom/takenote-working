@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
-// eslint-disable-next-line import/named
 import { createMemoryHistory, MemoryHistory } from 'history'
 import { MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
