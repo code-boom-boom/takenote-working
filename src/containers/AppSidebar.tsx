@@ -126,7 +126,7 @@ const AppSidebar: React.FC = () => {
           onClick={() => {
             _swapFolder(Folder.FAVORITES)
           }}
-          onDrag={favoriteNoteHandler}
+          onDrop={favoriteNoteHandler}
           onDragOver={allowDrop}
         >
           <Bookmark size={15} style={{ marginRight: '.75rem' }} color={iconColor} />
