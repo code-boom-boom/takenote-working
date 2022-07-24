@@ -30,8 +30,8 @@ import {
 import { toggleSettingsModal } from 'slices/settings'
 import { syncState } from 'slices/sync'
 import { CategoryItem, NoteItem, ReactDragEvent, ReactSubmitEvent, RootState } from 'types'
-
-const iconColor = 'rgba(255, 255, 255, 0.25)'
+import AppSidebarAction from 'components/AppSidebarAction'
+import { iconColor } from 'constants/index'
 
 const AppSidebar: React.FC = () => {
   const { categories } = useSelector((state: RootState) => state.categoryState)
@@ -137,67 +137,15 @@ const AppSidebar: React.FC = () => {
   return (
     <aside className="app-sidebar">
       <section className="app-sidebar-actions">
-        <>
-          <button
-            className="action-button"
-            aria-label="Create new note"
-            onClick={newNoteHandler}
-            title="Create note"
-          >
-            <span>
-              <Plus
-                className="action-button-icon"
-                size={18}
-                color={iconColor}
-                aria-hidden="true"
-                focusable="false"
-              />
-            </span>
-          </button>
-          <button
-            className="action-button"
-            aria-label="Sync notes"
-            onClick={syncNotesHandler}
-            disabled={syncing}
-            title="Sync notes"
-          >
-            <span>
-              {syncing ? (
-                <Loader
-                  size={18}
-                  className="action-button-icon"
-                  color={iconColor}
-                  aria-hidden="true"
-                  focusable="false"
-                />
-              ) : (
-                <UploadCloud
-                  size={18}
-                  className="action-button-icon"
-                  color={iconColor}
-                  aria-hidden="true"
-                  focusable="false"
-                />
-              )}
-            </span>
-          </button>
-          <button
-            className="action-button"
-            aria-label="Settings"
-            onClick={settingsHandler}
-            title="Settings"
-          >
-            <span>
-              <Settings
-                size={18}
-                className="action-button-icon"
-                color={iconColor}
-                aria-hidden="true"
-                focusable="false"
-              />
-            </span>
-          </button>
-        </>
+        {activeFolder !== Folder.TRASH && (
+          <AppSidebarAction handler={newNoteHandler} icon={Plus} label="Create new note" />
+        )}
+        <AppSidebarAction
+          handler={syncNotesHandler}
+          icon={syncing ? Loader : UploadCloud}
+          label="Sync notes"
+        />
+        <AppSidebarAction handler={settingsHandler} icon={Settings} label="Settings" />
       </section>
       <section className="app-sidebar-main">
         <div
