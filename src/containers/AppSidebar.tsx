@@ -45,7 +45,7 @@ const AppSidebar: React.FC = () => {
   const _addNote = (note: NoteItem) => dispatch(addNote(note))
   const _swapNote = (noteId: string) => dispatch(swapNote(noteId))
   const _swapCategory = (categoryId: string) => dispatch(swapCategory(categoryId))
-  const _swapFolder = (folder: string) => dispatch(swapFolder(folder))
+  const _swapFolder = (folder: Folder) => dispatch(swapFolder(folder))
   const _addCategory = (category: CategoryItem) => dispatch(addCategory(category))
   const _deleteCategory = (categoryId: string) => dispatch(deleteCategory(categoryId))
   const _pruneCategoryFromNotes = (categoryId: string) =>
@@ -56,7 +56,7 @@ const AppSidebar: React.FC = () => {
   const _toggleTrashedNote = (noteId: string) => dispatch(toggleTrashedNote(noteId))
   const _toggleFavoriteNote = (noteId: string) => dispatch(toggleFavoriteNote(noteId))
   const _addCategoryToNote = (categoryId: string, noteId: string) =>
-    dispatch(addCategoryToNote(categoryId, noteId))
+    dispatch(addCategoryToNote({ categoryId, noteId }))
 
   const { addingTempCategory, setAddingTempCategory } = useKeyboard()
   const [tempCategory, setTempCategory] = useState('')
