@@ -19,13 +19,8 @@ const App: React.FC = () => {
   const _loadNotes = () => dispatch(loadNotes())
   const _loadCategories = () => dispatch(loadCategories())
 
-  useEffect(() => {
-    _loadNotes()
-  }, [])
-
-  useEffect(() => {
-    _loadCategories()
-  }, [])
+  useEffect(_loadNotes, [])
+  useEffect(_loadCategories, [])
 
   return (
     <div className={`app ${dark ? 'dark' : ''}`}>
