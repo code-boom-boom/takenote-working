@@ -1,26 +1,27 @@
-import './styles/index.scss'
+import 'styles/index.scss'
 
 import React from 'react'
 import { render } from 'react-dom'
-import { Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { applyMiddleware, compose, createStore } from 'redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
+import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
 
-import rootReducer from 'reducers'
-import rootSaga from 'sagas'
-import history from 'utils/history'
 import App from 'containers/App'
+import rootReducer from 'slices'
+import rootSaga from 'sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [sagaMiddleware, ...getDefaultMiddleware({ thunk: false })],
+})
 
 sagaMiddleware.run(rootSaga)
 
 render(
-  <Router history={history}>
+  <Router>
     <Provider store={store}>
       <App />
     </Provider>

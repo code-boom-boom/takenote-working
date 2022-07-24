@@ -1,15 +1,9 @@
 import { put, all, takeLatest } from 'redux-saga/effects'
 
-import { Actions } from 'constants/enums'
 import { requestCategories, requestNotes, saveState } from 'api'
-import {
-  loadCategoriesError,
-  loadCategoriesSuccess,
-  loadNotesError,
-  loadNotesSuccess,
-  syncStateError,
-  syncStateSuccess,
-} from 'actions'
+import { loadCategories, loadCategoriesError, loadCategoriesSuccess } from 'slices/category'
+import { loadNotes, loadNotesError, loadNotesSuccess } from 'slices/note'
+import { syncState, syncStateError, syncStateSuccess } from 'slices/sync'
 import { SyncStateAction } from 'types'
 
 function* fetchNotes() {
@@ -44,9 +38,9 @@ function* postState({ payload: { notes, categories } }: SyncStateAction) {
 
 export function* allSagas() {
   yield all([
-    takeLatest(Actions.LOAD_NOTES, fetchNotes),
-    takeLatest(Actions.LOAD_CATEGORIES, fetchCategories),
-    takeLatest(Actions.SYNC_STATE, postState),
+    takeLatest(loadNotes.type, fetchNotes),
+    takeLatest(loadCategories.type, fetchCategories),
+    takeLatest(syncState.type, postState),
   ])
 }
 

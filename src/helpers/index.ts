@@ -1,8 +1,8 @@
-import uuid from 'uuid/v4'
 import moment from 'moment'
+import uuid from 'uuid/v4'
 
-import { NoteItem } from '../types'
-import { Folders } from '../constants/enums'
+import { Folder } from 'constants/enums'
+import { NoteItem } from 'types'
 
 export function getNoteTitle(text: string): string {
   const noteTitleRegEx = /[\w'?!., ]{1,50}/
@@ -32,6 +32,7 @@ ${note.text}`
 
 export function downloadNote(filename: string, note: NoteItem): void {
   var pom = document.createElement('a')
+
   pom.setAttribute(
     'href',
     'data:text/plain;charset=utf-8,' + encodeURIComponent(noteWithFrontmatter(note))
@@ -60,5 +61,5 @@ export const newNote = (categoryId?: string, folder?: string): NoteItem => ({
   created: moment().format(),
   lastUpdated: moment().format(),
   category: categoryId,
-  favorite: folder === Folders.FAVORITES,
+  favorite: folder === Folder.FAVORITES,
 })
