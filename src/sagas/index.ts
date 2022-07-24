@@ -26,9 +26,9 @@ function* fetchCategories() {
   }
 }
 
-function* postState({ payload: { notes, categories } }: SyncStateAction) {
+function* postState({ payload }: SyncStateAction) {
   try {
-    yield saveState(notes, categories)
+    yield saveState(payload)
 
     yield put(syncStateSuccess())
   } catch (error) {
@@ -36,7 +36,7 @@ function* postState({ payload: { notes, categories } }: SyncStateAction) {
   }
 }
 
-export function* allSagas() {
+function* rootSaga() {
   yield all([
     takeLatest(loadNotes.type, fetchNotes),
     takeLatest(loadCategories.type, fetchCategories),
@@ -44,4 +44,4 @@ export function* allSagas() {
   ])
 }
 
-export default allSagas
+export default rootSaga

@@ -63,8 +63,13 @@ export interface RootState {
 }
 
 //==============================================================================
-// Sagas
+// API
 //==============================================================================
+
+export interface SyncStatePayload {
+  categories: CategoryItem[]
+  notes: NoteItem[]
+}
 
 export interface SyncStateAction {
   type: typeof syncState.type
@@ -75,7 +80,7 @@ export interface SyncStateAction {
 }
 
 //==============================================================================
-// Eents
+// Events
 //==============================================================================
 
 export type ReactDragEvent = React.DragEvent<HTMLDivElement>
