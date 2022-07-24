@@ -4,12 +4,19 @@
 
 A web-based note-taking app with GitHub sync and Markdown support.
 
-## Installation
+## Setup
+
+### Install
 
 ```bash
 git clone git@github.com:kevinlin-crypto/takenote-working.git
 cd takenote-working
 npm i
+```
+
+### Run
+
+```bash
 npm start
 ```
 
@@ -24,6 +31,6 @@ npm start
 - [ ] Search notes
 - [ ] Sync and store notes in GitHub gist (currently local storage)
 
-### Data Seed
+### Seed data
 
 To seed the app with some test data, paste the contents of `seed.js` into your browser console and refresh.
