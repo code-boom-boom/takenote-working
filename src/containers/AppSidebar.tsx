@@ -29,7 +29,7 @@ import {
 } from 'slices/note'
 import { toggleSettingsModal } from 'slices/settings'
 import { syncState } from 'slices/sync'
-import { RootState, CategoryItem, NoteItem } from 'types'
+import { CategoryItem, NoteItem, ReactDragEvent, ReactSubmitEvent, RootState } from 'types'
 
 const iconColor = 'rgba(255, 255, 255, 0.25)'
 
@@ -94,9 +94,7 @@ const AppSidebar: React.FC = () => {
     setErrorCategoryMessage('')
   }
 
-  const onSubmit = (
-    event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLInputElement>
-  ) => {
+  const onSubmit = (event: ReactSubmitEvent): void => {
     event.preventDefault()
 
     const category = { id: kebabCase(tempCategory), name: tempCategory }
@@ -120,17 +118,17 @@ const AppSidebar: React.FC = () => {
     _toggleSettingsModal()
   }
 
-  const allowDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const allowDrop = (event: ReactDragEvent) => {
     event.preventDefault()
   }
 
-  const trashNoteHandler = (event: React.DragEvent<HTMLDivElement>) => {
+  const trashNoteHandler = (event: ReactDragEvent) => {
     event.preventDefault()
 
     _toggleTrashedNote(event.dataTransfer.getData('text'))
   }
 
-  const favoriteNoteHandler = (event: React.DragEvent<HTMLDivElement>) => {
+  const favoriteNoteHandler = (event: ReactDragEvent) => {
     event.preventDefault()
 
     _toggleFavoriteNote(event.dataTransfer.getData('text'))
