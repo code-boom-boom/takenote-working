@@ -10,11 +10,17 @@ import { TempStateProvider } from 'contexts/TempStateContext'
 import { loadCategories } from 'slices/category'
 import { loadNotes } from 'slices/note'
 import { RootState } from 'types'
+import Helmet from 'react-helmet'
+import { Folder } from '../constants/enums'
+import { folderMap } from '../constants'
 
 const App: React.FC = () => {
-  const { dark } = useSelector((state: RootState) => state.themeState)
-
   const dispatch = useDispatch()
+  const { dark } = useSelector((state: RootState) => state.themeState)
+  const { activeFolder, activeCategoryId } = useSelector((state: RootState) => state.noteState)
+  const { categories } = useSelector((state: RootState) => state.categoryState)
+
+  const activeCategory = categories.find(({ id }) => id === activeCategoryId)
 
   const _loadNotes = () => {
     dispatch(loadNotes())
@@ -27,15 +33,28 @@ const App: React.FC = () => {
   useEffect(_loadCategories, [])
 
   return (
-    <div className={`app ${dark ? 'dark' : ''}`}>
-      <TempStateProvider>
-        <AppSidebar />
-        <NoteList />
-        <NoteEditor />
-        <KeyboardShortcuts />
-        <SettingsModal />
-      </TempStateProvider>
-    </div>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          {' '}
+          {activeFolder === Folder.CATEGORY
+            ? activeCategory && activeCategory.name
+            : folderMap[activeFolder]}
+          | TakeNote
+        </title>
+      </Helmet>
+
+      <div className={`app ${dark ? 'dark' : ''}`}>
+        <TempStateProvider>
+          <AppSidebar />
+          <NoteList />
+          <NoteEditor />
+          <KeyboardShortcuts />
+          <SettingsModal />
+        </TempStateProvider>
+      </div>
+    </>
   )
 }
 
