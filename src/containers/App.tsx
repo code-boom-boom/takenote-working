@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 import AppSidebar from 'containers/AppSidebar'
 import KeyboardShortcuts from 'containers/KeyboardShortcuts'
@@ -10,9 +11,8 @@ import { TempStateProvider } from 'contexts/TempStateContext'
 import { loadCategories } from 'slices/category'
 import { loadNotes } from 'slices/note'
 import { RootState } from 'types'
-import Helmet from 'react-helmet'
-import { Folder } from '../constants/enums'
-import { folderMap } from '../constants'
+import { Folder } from 'constants/enums'
+import { folderMap } from 'constants/index'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -33,7 +33,7 @@ const App: React.FC = () => {
   useEffect(_loadCategories, [])
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <meta charSet="utf-8" />
         <title>
@@ -54,7 +54,7 @@ const App: React.FC = () => {
           <SettingsModal />
         </TempStateProvider>
       </div>
-    </>
+    </HelmetProvider>
   )
 }
 
