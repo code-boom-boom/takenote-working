@@ -78,6 +78,7 @@ const AppSidebar: React.FC = () => {
     if (activeFolder === Folder.TRASH) {
       _swapFolder(Folder.ALL)
     }
+
     if ((activeNote && activeNote.text !== '') || !activeNote) {
       const note = newNote(
         activeCategoryId,
