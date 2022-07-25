@@ -94,7 +94,7 @@ const AppSidebar: React.FC = () => {
     setErrorCategoryMessage('')
   }
 
-  const onSubmit = (event: ReactSubmitEvent): void => {
+  const onSubmitCategory = (event: ReactSubmitEvent): void => {
     event.preventDefault()
 
     const category = { id: kebabCase(tempCategory), name: tempCategory }
@@ -254,7 +254,7 @@ const AppSidebar: React.FC = () => {
           })}
         </div>
         {addingTempCategory && (
-          <form className="category-form" onSubmit={onSubmit}>
+          <form className="category-form" onSubmit={onSubmitCategory}>
             <input
               autoFocus
               maxLength={15}
@@ -263,10 +263,10 @@ const AppSidebar: React.FC = () => {
                 setTempCategory(event.target.value)
               }}
               onBlur={event => {
-                if (!tempCategory || errorCategoryMessage) {
+                if (!tempCategory || tempCategory.trim() === '' || errorCategoryMessage) {
                   resetTempCategory()
                 } else {
-                  onSubmit(event)
+                  onSubmitCategory(event)
                 }
               }}
             />
