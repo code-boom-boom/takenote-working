@@ -1,4 +1,11 @@
+$dark-sidebar: #333;
+$dark-editor: #3f3f3f;
+
 .dark {
+  .app-sidebar {
+    border-right: 1px solid darken($dark-sidebar, 8%);
+  }
+
   .note-sidebar {
     background: #292929;
     border-right: 1px solid #222;
