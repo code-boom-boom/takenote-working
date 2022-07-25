@@ -20,6 +20,13 @@ npm i
 npm start
 ```
 
+### Run in Docker
+
+```bash
+docker build -t takenote .
+docker run -p 80:80 takenote
+```
+
 ## Features
 
 - [x] Plain text notes with Markdown highlighting and frontmatter metadata
