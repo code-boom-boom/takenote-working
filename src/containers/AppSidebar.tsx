@@ -136,9 +136,7 @@ const AppSidebar: React.FC = () => {
   return (
     <aside className="app-sidebar">
       <section className="app-sidebar-actions">
-        {activeFolder !== Folder.TRASH && (
-          <AppSidebarAction handler={newNoteHandler} icon={Plus} label="Create new note" />
-        )}
+        <AppSidebarAction handler={newNoteHandler} icon={Plus} label="Create new note" />
         <AppSidebarAction
           handler={syncNotesHandler}
           icon={syncing ? Loader : UploadCloud}
