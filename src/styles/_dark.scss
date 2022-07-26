@@ -12,7 +12,12 @@ $dark-editor: #3f3f3f;
 
     .note-sidebar-header {
       color: white;
-      border-bottom: 1px solid #191919;
+
+      [type='search'] {
+        background: lighten($dark-sidebar, 8%);
+        color: $light-font-color;
+        border: 1px solid $dark-sidebar;
+      }
     }
 
     .note-list {
@@ -42,8 +47,9 @@ $dark-editor: #3f3f3f;
       color: $light-font-color;
 
       select {
-        background: darken($dark-sidebar, 5%);
-        color: darken($light-font-color, 5%);
+        background: lighten($dark-sidebar, 8%);
+        color: $light-font-color;
+        border: 1px solid $dark-sidebar;
       }
     }
 
