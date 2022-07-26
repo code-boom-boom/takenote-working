@@ -35,7 +35,7 @@ docker run -p 80:80 takenote
 - [x] Add notes to categories or mark note as favorite
 - [x] Keybinding shortcuts for common actions
 - [x] Settings for light/dark mode, sync frequency, and Vim mode
-- [ ] Search notes
+- [x] Search notes
 - [ ] Sync and store notes in GitHub gist (currently local storage)
 
 ### Seed data
