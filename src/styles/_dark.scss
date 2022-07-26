@@ -35,6 +35,25 @@ $dark-editor: #3f3f3f;
         }
       }
     }
+
+    .note-options-context-menu {
+      border: 1px solid darken($dark-sidebar, 8%);
+      background: $app-sidebar-color;
+      color: $light-font-color;
+
+      select {
+        background: darken($dark-sidebar, 5%);
+        color: darken($light-font-color, 5%);
+      }
+    }
+
+    .note-options-nav {
+      .nav-item {
+        &:hover {
+          background: darken($app-sidebar-color, 5%);
+        }
+      }
+    }
   }
 
   .empty-editor {
