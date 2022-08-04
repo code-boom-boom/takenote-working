@@ -40,9 +40,24 @@ const NoteList: React.FC = () => {
   const _searchNotes = _.debounce((searchValue: string) => dispatch(searchNotes(searchValue)), 200)
 
   const [noteOptionsId, setNoteOptionsId] = useState('')
+  const [noteOptionsPosition, setNoteOptionsPosition] = useState({ x: 0, y: 0 })
   const node = useRef<HTMLDivElement>(null)
 
   const handleNoteOptionsClick = (event: ReactMouseEvent, noteId: string = '') => {
+    if (
+      event instanceof MouseEvent &&
+      (event.target instanceof Element || event.target instanceof SVGElement)
+    ) {
+      console.log('event target:', event, event.target.classList.contains('note-options'))
+      if (event.target.classList.contains('note-options')) {
+        setNoteOptionsPosition({ x: event.pageX, y: event.pageY })
+      }
+      if (event.target.parentElement instanceof Element) {
+        if (event.target.parentElement.classList.contains('note-options')) {
+          setNoteOptionsPosition({ x: event.pageX, y: event.pageY })
+        }
+      }
+    }
     event.stopPropagation()
 
     if (node.current && node.current.contains(event.target as HTMLDivElement)) return
