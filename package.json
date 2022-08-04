@@ -10,7 +10,7 @@
     "postinstall": "patch-package",
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "e2e": "npx cypress open"
+    "e2e": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -140,6 +140,7 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@testing-library/cypress": "^5.0.2",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "coveralls": "^3.0.7",
