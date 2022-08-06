@@ -25,3 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 .coveralls.yml
 package-lock.json
+*/private
+/private
+src/private
+config.*
