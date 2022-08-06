@@ -2,11 +2,11 @@ import uuid from 'uuid/v4'
 import React, { useState } from 'react'
 import {
   Book,
-  Bookmark,
   Folder as FolderIcon,
   Loader,
   Plus,
   Settings,
+  Star,
   Trash2,
   UploadCloud,
   X,
@@ -172,7 +172,7 @@ const AppSidebar: React.FC = () => {
           onDragOver={allowDrop}
           data-cy="favorites"
         >
-          <Bookmark size={15} className="app-sidebar-icon" color={iconColor} />
+          <Star size={15} className="app-sidebar-icon" color={iconColor} />
           Favorites
         </div>
         <div

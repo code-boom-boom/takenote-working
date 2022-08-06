@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Bookmark, MoreHorizontal } from 'react-feather'
+import { MoreHorizontal, Star } from 'react-feather'
 import _ from 'lodash'
 
 import { Folder } from 'constants/enums'
@@ -124,9 +124,9 @@ const NoteList: React.FC = () => {
               draggable
               onDragStart={event => handleDragStart(event, note.id)}
             >
-              <div>
+              <div className="v-center">
+                {note.favorite && <Star className="note-favorite" size={15} />}
                 {noteTitle}
-                {note.favorite && <Bookmark className="note-favourite" size={15} />}
               </div>
               <div
                 className={noteOptionsId === note.id ? 'note-options active ' : 'note-options'}
